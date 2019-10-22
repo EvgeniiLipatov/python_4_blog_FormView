@@ -18,6 +18,8 @@ from django.urls import path
 from webapp.views import IndexView, ArticleView, ArticleCreateView, \
     ArticleUpdateView, ArticleDeleteView, CommentCreateView, CommentForArticleCreateView, \
     CommentListView, CommentUpdateView, CommentDeleteView, ArticleSearchView
+from accounts.views import login_view, logout_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +33,8 @@ urlpatterns = [
     path('comment/add/', CommentCreateView.as_view(), name='comment_add'),
     path('comment/<int:pk>/edit/', CommentUpdateView.as_view(), name='comment_update'),
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment_delete'),
-    path('article/<int:pk>/add-comment/', CommentForArticleCreateView.as_view(), name='article_comment_create')
+    path('article/<int:pk>/add-comment/', CommentForArticleCreateView.as_view(), name='article_comment_create'),
+
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout')
 ]
